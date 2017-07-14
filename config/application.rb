@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module KaraokeManager2017
   class Application < Rails::Application
-
+    config.web_console.whitelisted_ips = ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
