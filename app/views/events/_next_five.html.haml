@@ -1,0 +1,14 @@
+- if @event.next_5.present?
+  - if @event.next_5.length > 1
+    #next-5
+      upcoming: 
+      - @event.next_5.to_a.slice(1,5).each do |event|
+        %strong= event.break_or_name
+
+  - entry = @event.next_5.first
+  #next-song
+    next:
+    - if entry.break_flag
+      %strong BREAK
+    - else
+      %strong #{entry.song.title} - #{entry.song.artist.name} (#{entry.participant.code})

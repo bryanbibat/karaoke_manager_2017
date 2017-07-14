@@ -5,9 +5,13 @@ class Entry < ApplicationRecord
 
   def break_or_name
     if break_flag
-      "break"
+      "BREAK"
     else
       "#{participant.code}-#{song.code}-#{song.machine}"
     end
+  end
+
+  def long_display
+    "#{song.title} - #{song.artist.name}"
   end
 end

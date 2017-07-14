@@ -58,6 +58,6 @@ class EntryDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(entry)
-    "Ev##{entry.event.name} - #{entry.break_or_name}"
+    "Ev##{entry.event.name} - #{entry.order_no} - #{entry.break_or_name}"
   end
 end

@@ -1,0 +1,6 @@
+- if @event.status == :break
+  %h1.break Break Time, please wait...
+- elsif @event.status == :active
+  %h1= @event.entry.long_display
+  .form-group
+    %textarea.form-control#lyrics{ readonly: true, rows: 5 }= @event.entry.song.lyrics

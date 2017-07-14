@@ -1,32 +1,8 @@
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
-<h3>Welcome</h3>
+<h3>Welcome to our new karaoke managing tool</h3>
+
+<p><em>still WIP</em></p>
+<p>Current events:</p>
+
+<% Event.all.each do |event| %>
+  <p><%= link_to event.name, event_path(event.slug) %></p>
+<% end %>

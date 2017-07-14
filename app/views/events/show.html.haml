@@ -1,0 +1,11 @@
+%h1= @event.name
+
+- if @event.url.present?
+  %p
+    %small= link_to @event.url
+
+= simple_format @event.description
+
+%h3= link_to "View current status", live_event_path(@event.slug)
+
+%h2 Set List

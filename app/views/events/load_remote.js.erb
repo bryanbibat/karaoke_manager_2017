@@ -1,0 +1,6 @@
+<% if params[:section] == "all" || params[:section] == "next_5" %>
+  $("#next-songs").html("<%= j render 'next_five' %>")
+<% end %>
+<% if params[:section] == "all" || params[:section] == "current" %>
+  $("#current-song").html("<%= j render 'current_entry' %>")
+<% end %>

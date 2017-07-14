@@ -1,0 +1,66 @@
+#next-songs
+  = render 'next_five'
+
+#current-song
+  = render 'current_entry'
+
+:javascript
+  document.body.style.height = window.innerHeight + "px";
+
+  window.onkeydown = function (e) {
+    var lyrics = document.getElementById('lyrics');
+    if (e.code === "KeyB" || e.code === "PageDown") {
+      lyrics.scrollTop += lyrics.clientHeight / 5;
+      e.preventDefault();
+    } else if (e.code === "F5" || e.code === "Escape" || e.code === "PageUp") {
+      lyrics.scrollTop -= lyrics.clientHeight / 5;
+      e.preventDefault();
+    }
+  }
+
+  window.summary = #{raw @event.summary_json}
+
+  function updateLive() {
+    $.get('#{live_event_path(id: @event.slug, format: :json)}', {},
+      function(data) {
+        console.log(data);
+        var param = null;
+        if (window.summary.state !== data.state ||
+        (window.summary.current_id !== data.current_id)) { 
+          param = "all";
+        } else if (window.summary.next_5_timestamp !== data.next_5_timestamp) {
+          param = "next_5";
+        } else if (window.summary.current_id !== data.current_id) {
+          param = "current";
+        }
+        console.log(param)
+        if (param) {
+          $.get('#{load_remote_event_path(id: @event.slug, format: :js)}', { section: param });
+        }
+        window.summary = data;
+      }
+    );
+  /*
+    set state
+
+    for interval
+
+    get state
+
+    if status different
+
+      reload all 3
+
+    else
+
+      check last update of all next 2-5, reload if changed
+      check id of next 1, reload if
+      check id of current, reload if
+
+      change summary
+
+  */
+  }
+
+  window.setInterval(updateLive, 10000);
+

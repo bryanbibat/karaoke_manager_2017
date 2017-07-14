@@ -11,5 +11,12 @@ Rails.application.routes.draw do
   end
 
   root to: 'visitors#index'
+
+  resources :events do
+    member do
+      get :live, :load_remote
+    end
+  end
+
   devise_for :users
 end

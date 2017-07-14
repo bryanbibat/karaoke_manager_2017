@@ -1,0 +1,23 @@
+#current-song {
+  textarea {
+    background: #333;
+    font-weight: bold;
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  #current-song {
+    textarea {
+      font-size: 2em
+    }
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  #current-song {
+    textarea {
+      font-size: 3em
+    }
+  }
+}
