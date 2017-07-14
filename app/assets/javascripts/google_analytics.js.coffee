@@ -39,6 +39,6 @@ class @GoogleAnalytics
     document.domain.indexOf(str) isnt -1
 
   @analyticsId: ->
-    'thoughtbot/administrate'
+    'UA-102600497-1'
 
 GoogleAnalytics.load()
