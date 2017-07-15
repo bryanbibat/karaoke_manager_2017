@@ -25,7 +25,7 @@
       function(data) {
         console.log(data);
         var param = null;
-        if (window.summary.state !== data.state ||
+        if (window.summary.status !== data.status ||
         (window.summary.current_id !== data.current_id)) { 
           param = "all";
         } else if (window.summary.next_5_timestamp !== data.next_5_timestamp) {

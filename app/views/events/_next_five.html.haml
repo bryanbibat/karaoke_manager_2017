@@ -1,4 +1,10 @@
-- if @event.next_5.present?
+- if @event.status == :setup
+  %h1= "#{@event.name} setting up"
+- elsif @event.status == :finished
+  %h1= "#{@event.name} finished"
+  %p
+    = link_to "back to event", event_path(@event.slug)
+- elsif @event.next_5.present?
   - if @event.next_5.length > 1
     #next-5
       upcoming: 

@@ -2,10 +2,30 @@
 
 - if @event.url.present?
   %p
-    %small= link_to @event.url
+    %small= link_to @event.url, @event.url
 
 = simple_format @event.description
 
-%h3= link_to "View current status", live_event_path(@event.slug)
+%strong= link_to "View current status", live_event_path(@event.slug)
 
 %h2 Set List
+
+%table.table.table-sm
+  %thead
+    %tr
+      %th #
+      %th Singer code
+      %th Song code
+      %th Song
+      %th Artist
+  %tbody
+    - @event.entries.order(:order_no).each_with_index do |entry, idx|
+      %tr{ class: (entry.id == @event.entry_id ? "table-active" : "") }
+        %td= idx + 1
+        - if entry.break_flag
+          %td.text-center{colspan: 4,class: (entry.id == @event.entry_id ? "table-active" : "table-info")} BREAK
+        - else
+          %td= entry.participant.code
+          %td= entry.song.code
+          %td= entry.song.title
+          %td= entry.song.artist.name

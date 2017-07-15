@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_many :entries, inverse_of: :event
 
   def status
-    if start_at < Time.now
+    if start_at > Time.now
       :setup
     elsif end_at < Time.now
       :finished
